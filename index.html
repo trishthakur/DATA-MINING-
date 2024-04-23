@@ -187,6 +187,7 @@
                                    <p>To perform a real estate analysis, we needed to gather information on the current state of real estate in Boulder, CO. Zillow is a website that posts current real estate for sale. Because of the format, web scraping had to be used to gather relevant information in a usable format. 
                                         An API combined with a Python HTML parser was used to gather residential (homes and townhouses) data from Zillow for Boulder, CO, on Sunday, March 17. Information was gathered on price, address, number of bedrooms, number of bathrooms, square footage, latitude and longitude, and zestimate (Zillow's estimate of the home's value). There was no missing data, but not every home collected had a Zestimate. Missing Zestimates were marked with NaN. Price outliers were determined by being outside the range Median  1.5* IQR and were removed for better results in the modeling to come later. No other actions were needed on the beds, baths, and square footage features.
                                         </p>
+                                        <img src="images/zillow data.png" style="max-width:100%; height:auto;">
                               </div>
                          </div>
                     </div>
@@ -199,6 +200,7 @@
                                         Outliers were removed on price using the same method as the Zillow data (Median  1.5* IQR). Of the remaining data, some had zero values for the number of bedrooms, bathrooms, and square footage. This was determined to be missing data, and these values were replaced with the average value for each factor.
                                    Square footage was broken down into above-ground sqft, finished basement sqft, unfinished basement sqft, garage sqft, and studio sqft. Zillow calculates its square footage based on above-ground, finished basement, and studio square footage, so these values were summed to match those found in Zillow. Bathrooms were also broken down into the number of full, three-quarter, and half bathrooms. Since Zillow counts full bathrooms and one and three-quarter and half bathrooms as one-half, the number of full bathrooms and one-half multiplied by the number of three-quarter and half bathrooms was calculated to match Zillow data. A new column was also made with just the sale year since we do not have data on sale month/day for the Zillow data, but it can be assumed that these properties will sell this year.
                                    </p>
+                                   <img src="images/res_sales and zillow.png" style="max-width:100%; height:auto;">
                               </div>
                          </div>
                     </div>
@@ -211,6 +213,7 @@
                                         Column names were changed to have the same column name for each feature (sale price, sale year, square footage, number of bedrooms, number of bathrooms, and address). 
                                         Once the two data frames were in the same format, pd.concat() was used to combine the two data frames into one sales data frame with both Boulder County and Zillow data. 
                                         This data was then exported into a CSV file. </p>
+                                        <img src="images/residential data.png" style="max-width:100%; height:auto;">
                               </div>
                          </div>
                     </div>
@@ -280,7 +283,7 @@
                                         Our objective is to utilize these selected features to predict whether a house's price will exceed or fall below $800,000.</p>
                                    <p>Data BEFORE Feature Engineering</p>     
                                    <img src="images/databefore.png">
-                                   <p>Data AFTER Feature Engineering</p>     
+                                   <p>Data AFTER Feature Engineering: The data is prepared to be compatible with the models we select for making predictions.</p>     
                                    <img src="images/dataafter.png" style="max-width:100%; height:auto;">                              
                          </div>
                     </div>
